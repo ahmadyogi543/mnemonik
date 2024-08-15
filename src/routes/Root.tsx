@@ -1,9 +1,11 @@
+import TopBar from "../components/TopBar";
+
 const RootRoute = () => {
   return (
-    <div>
-      <h1>Root Route</h1>
-      <p>TODO: IMPLEMENT THE ROOT ROUTE HERE...</p>
-    </div>
+    <>
+      <TopBar />
+      <p>Body</p>
+    </>
   );
 };
 
