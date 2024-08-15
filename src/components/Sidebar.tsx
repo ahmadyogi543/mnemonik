@@ -8,11 +8,11 @@ const Sidebar = () => {
       <div className="flex-none">
         <Searchbar />
       </div>
-      <div className="flex flex-col flex-grow overflow-y-auto gap-4">
+      <div className="flex flex-col flex-grow overflow-y-auto gap-2">
         <NoteItem />
         <NoteItem />
       </div>
-      <div className="flex-none flex">
+      <div className="flex flex-none">
         <AddNoteButton />
       </div>
     </>

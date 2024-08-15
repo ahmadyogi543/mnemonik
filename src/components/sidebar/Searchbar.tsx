@@ -4,7 +4,7 @@ const Searchbar = () => {
   return (
     <div className="flex gap-2">
       <input
-        className="flex-grow focus:outline-none block px-4 py-2 border border-zinc-800 text-sm"
+        className="flex-grow focus:outline-none block px-4 py-2 border border-gray-300 text-sm"
         placeholder="Cari catatan berdasarkan judul..."
         type="text"
         name=""

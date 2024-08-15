@@ -1,7 +1,6 @@
 const Content = () => {
   return (
-    <div className="flex flex-col flex-grow bg-white border border-zinc-800">
-      {/* <h1 className="font-bold text-3xl mb-4">Catatan Harian</h1> */}
+    <div className="flex flex-col flex-grow bg-white border border-gray-300">
       <input
         type="text"
         className="focus:outline-none block font-bold text-3xl m-8"

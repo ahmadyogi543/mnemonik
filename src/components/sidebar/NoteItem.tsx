@@ -1,8 +1,17 @@
+import React from "react";
 import { FaClone, FaEdit, FaTrashAlt } from "react-icons/fa";
 
-const NoteItem = () => {
+type NoteItemProps = {
+  active?: boolean;
+};
+
+const NoteItem: React.FC<NoteItemProps> = ({ active = false }) => {
   return (
-    <div className="p-4 bg-white border border-zinc-800">
+    <div
+      className={`p-4 bg-white border ${
+        active ? "border-zinc-800" : "border-gray-300"
+      }`}
+    >
       <div className="flex justify-between items-center mb-4 text-zinc-800">
         <h3 className="font-medium">Example Note</h3>
         <div className="flex gap-2">
