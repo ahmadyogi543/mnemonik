@@ -1,6 +1,6 @@
 import { MdMenu, MdMoreVert } from "react-icons/md";
 
-const TopBar = () => {
+const Topbar = () => {
   return (
     <div className="flex justify-between p-5 shadow-md bg-zinc-800 text-slate-100">
       <div>
@@ -16,4 +16,4 @@ const TopBar = () => {
   );
 };
 
-export default TopBar;
+export default Topbar;

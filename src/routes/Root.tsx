@@ -1,10 +1,11 @@
-import TopBar from "../components/TopBar";
+import Body from "../components/Body";
+import Topbar from "../components/Topbar";
 
 const RootRoute = () => {
   return (
     <>
-      <TopBar />
-      <p>Body</p>
+      <Topbar />
+      <Body />
     </>
   );
 };
