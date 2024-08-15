@@ -7,7 +7,7 @@ const TopBar = () => {
         <MdMenu className="text-2xl" />
       </div>
       <div>
-        <h1>Mnemonik</h1>
+        <h1 className="font-bold">Mnemonik</h1>
       </div>
       <div>
         <MdMoreVert className="text-2xl" />
