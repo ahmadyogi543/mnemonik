@@ -1,4 +1,5 @@
 import Content from "./Content";
+// import EmptyContent from "./EmptyContent";
 import Sidebar from "./Sidebar";
 
 const Body = () => {
@@ -8,6 +9,7 @@ const Body = () => {
         <Sidebar />
       </div>
       <div className="flex flex-grow overflow-y-auto">
+        {/* <EmptyContent /> */}
         <Content />
       </div>
     </div>
