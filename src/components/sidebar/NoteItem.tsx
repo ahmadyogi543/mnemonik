@@ -18,7 +18,7 @@ const NoteItem: React.FC<NoteItemProps> = ({
 }) => {
   return (
     <div
-      className={`p-4 bg-white border ${
+      className={`p-4 bg-white border cursor-pointer hover:border-zinc-800 ${
         active ? "border-zinc-800" : "border-gray-300"
       }`}
     >
