@@ -25,8 +25,14 @@ const NoteItem: React.FC<NoteItemProps> = ({
       <div className="flex justify-between items-center mb-4 text-zinc-800">
         <h3 className="font-bold">{title}</h3>
         <div className="flex gap-2">
-          <FaClone className="block cursor-pointer" title="Salin" />
-          <FaTrashAlt className="block cursor-pointer" title="Hapus" />
+          <FaClone
+            className="block cursor-pointer hover:text-zinc-600"
+            title="Salin"
+          />
+          <FaTrashAlt
+            className="block cursor-pointer hover:text-zinc-600"
+            title="Hapus"
+          />
         </div>
       </div>
       <p className="text-sm text-gray-700">
