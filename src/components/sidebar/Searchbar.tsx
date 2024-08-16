@@ -10,7 +10,10 @@ const Searchbar = () => {
         name=""
         id=""
       />
-      <button className="block px-3 bg-zinc-800 hover:bg-zinc-700 text-white text-sm">
+      <button
+        className="block px-3 bg-zinc-800 hover:bg-zinc-700 text-white text-sm"
+        title="Cari"
+      >
         <FaSearch />
       </button>
     </div>
