@@ -1,7 +1,10 @@
 import React from "react";
 import { FaClone, FaTrashAlt } from "react-icons/fa";
 
+import { useNoteContext } from "../../context/NoteContext";
+
 type NoteItemProps = {
+  id: number;
   title: string;
   body: string;
   updatedAt: string;
@@ -10,17 +13,15 @@ type NoteItemProps = {
 
 const TEXT_LIMIT = 256;
 
-const NoteItem: React.FC<NoteItemProps> = ({
-  title,
-  body,
-  updatedAt,
-  active = false,
-}) => {
+const NoteItem: React.FC<NoteItemProps> = ({ id, title, body, updatedAt }) => {
+  const { note, setSelectedNote } = useNoteContext();
+
   return (
     <div
       className={`p-4 bg-white border cursor-pointer hover:border-zinc-800 ${
-        active ? "border-zinc-800" : "border-gray-300"
+        note && note.id === id ? "border-zinc-800" : "border-gray-300 "
       }`}
+      onClick={() => setSelectedNote(id)}
     >
       <div className="flex justify-between items-center mb-4 text-zinc-800">
         <h3 className="font-bold">{title}</h3>
