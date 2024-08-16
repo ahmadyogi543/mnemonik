@@ -73,22 +73,25 @@ const Content = () => {
   }, [mode]);
 
   return (
-    <div className="flex flex-col flex-grow bg-white border border-gray-300">
-      <input
-        type="text"
-        className="block focus:outline-none block font-bold text-3xl mx-8 mt-8"
-        onChange={(ev) => setTitle(ev.target.value)}
-        placeholder="Judul..."
-        readOnly={mode.data === AppMode.View}
-        ref={titleRef}
-        value={title}
-      />
+    <div className="flex flex-col relative flex-grow bg-white border border-gray-300">
+      <div className="m-8">
+        <input
+          type="text"
+          className="block focus:outline-none block font-bold text-3xl mb-2"
+          onChange={(ev) => setTitle(ev.target.value)}
+          placeholder="Judul..."
+          readOnly={mode.data === AppMode.View}
+          ref={titleRef}
+          value={title}
+        />
 
-      {mode.data === AppMode.Edit && (
-        <p className="mx-8 mt-2 text-gray-700 text-sm italic">{"[edit]"}</p>
-      )}
+        {mode.data === AppMode.Edit && (
+          <p className="text-gray-700 text-sm italic">{"[edit]"}</p>
+        )}
+      </div>
+
       <textarea
-        className={`focus:outline-none resize-none flex-grow block p-8`}
+        className={`focus:outline-none resize-none flex-grow block px-8 pb-8`}
         onChange={(ev) => setBody(ev.target.value)}
         placeholder="Konten..."
         readOnly={mode.data === AppMode.View}
