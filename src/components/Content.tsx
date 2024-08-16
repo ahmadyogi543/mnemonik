@@ -7,10 +7,12 @@ const Content = () => {
         type="text"
         className="focus:outline-none block font-bold text-3xl m-8"
         placeholder="Judul..."
+        readOnly
       />
       <textarea
         className="focus:outline-none resize-none flex-grow block p-8"
         placeholder="Konten..."
+        readOnly
       ></textarea>
       <ContentButton onClick={() => {}} />
     </div>
