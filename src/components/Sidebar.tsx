@@ -1,11 +1,11 @@
+import { useAppContext } from "../context/AppContext";
+
 import AddNoteButton from "./sidebar/AddNoteButton";
 import NoteItem from "./sidebar/NoteItem";
 import Searchbar from "./sidebar/Searchbar";
 
-import { useNoteContext } from "../context/NoteContext";
-
 const Sidebar = () => {
-  const { notes } = useNoteContext();
+  const { notes } = useAppContext();
 
   return (
     <>
@@ -13,8 +13,8 @@ const Sidebar = () => {
         <Searchbar />
       </div>
       <div className="flex flex-col flex-grow overflow-y-auto gap-2">
-        {notes.length !== 0 ? (
-          notes.map((note) => (
+        {notes.data.length !== 0 ? (
+          notes.data.map((note) => (
             <NoteItem
               key={`note-item-${note.id}`}
               id={note.id}

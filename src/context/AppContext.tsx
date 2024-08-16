@@ -1,0 +1,63 @@
+import React, { createContext, useContext, useEffect, useReducer } from "react";
+
+import { AppContextProps } from "./types";
+import { AppMode } from "../constant/app-mode";
+import { modeReducer } from "../reducers/modeReducer";
+import { notesReducer } from "../reducers/notesReducer";
+
+import NOTES from "../data/notes.json";
+
+const AppContext = createContext<AppContextProps | null>(null);
+
+export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [mode, modeDispatch] = useReducer(modeReducer, {
+    data: AppMode.Default,
+    noteId: -1,
+  });
+  const [notes, notesDispatch] = useReducer(notesReducer, { data: [] });
+
+  useEffect(() => {
+    // TODO: will get it from API
+    notesDispatch({
+      type: "SET",
+      payload: {
+        notes: NOTES.map((note) => ({
+          id: note.id,
+          title: note.title,
+          body: note.body,
+          createdAt: new Date(note.created_at),
+          updatedAt: new Date(note.updated_at),
+        })),
+      },
+    });
+  }, []);
+
+  return (
+    <AppContext.Provider
+      value={{
+        mode: {
+          data: mode.data,
+          noteId: mode.noteId,
+          dispatch: modeDispatch,
+        },
+        notes: {
+          data: notes.data,
+          dispatch: notesDispatch,
+        },
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
+
+export const useAppContext = () => {
+  const context = useContext(AppContext);
+  if (!context) {
+    throw new Error("UseAppContext must be used within an AppContextProvider");
+  }
+
+  return context;
+};

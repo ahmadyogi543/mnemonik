@@ -1,14 +1,14 @@
-import { NoteContextProvider } from "./context/NoteContext";
-
 import Body from "./components/Body";
 import Topbar from "./components/Topbar";
 
+import { AppContextProvider } from "./context/AppContext";
+
 const App = () => {
   return (
-    <NoteContextProvider>
+    <AppContextProvider>
       <Topbar />
       <Body />
-    </NoteContextProvider>
+    </AppContextProvider>
   );
 };
 

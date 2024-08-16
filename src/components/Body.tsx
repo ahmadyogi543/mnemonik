@@ -1,11 +1,12 @@
-import { useNoteContext } from "../context/NoteContext";
-
 import Content from "./Content";
 import EmptyContent from "./EmptyContent";
 import Sidebar from "./Sidebar";
 
+import { AppMode } from "../constant/app-mode";
+import { useAppContext } from "../context/AppContext";
+
 const Body = () => {
-  const { note } = useNoteContext();
+  const { mode } = useAppContext();
 
   return (
     <div className="flex flex-grow gap-4 p-4 overflow-hidden bg-gray-200">
@@ -13,11 +14,7 @@ const Body = () => {
         <Sidebar />
       </div>
       <div className="flex flex-grow overflow-y-auto">
-        {note ? (
-          <Content title={note.title} body={note.body} />
-        ) : (
-          <EmptyContent />
-        )}
+        {mode.data !== AppMode.Default ? <Content /> : <EmptyContent />}
       </div>
     </div>
   );
