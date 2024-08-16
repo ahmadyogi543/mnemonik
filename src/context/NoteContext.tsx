@@ -9,16 +9,17 @@ type Note = {
 };
 
 type NoteContextProps = {
+  note: Note | null;
   notes: Note[];
 };
 
-const NoteContext = createContext<NoteContextProps>({ notes: [] });
+const NoteContext = createContext<NoteContextProps>({ note: null, notes: [] });
 
 export const NoteContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   return (
-    <NoteContext.Provider value={{ notes: [] }}>
+    <NoteContext.Provider value={{ note: null, notes: [] }}>
       {children}
     </NoteContext.Provider>
   );
