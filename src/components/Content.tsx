@@ -1,3 +1,5 @@
+import ContentButton from "./ContentButton";
+
 const Content = () => {
   return (
     <div className="flex flex-col flex-grow bg-white border border-gray-300">
@@ -10,6 +12,7 @@ const Content = () => {
         className="focus:outline-none resize-none flex-grow block p-8"
         placeholder="Konten..."
       ></textarea>
+      <ContentButton onClick={() => {}} />
     </div>
   );
 };
