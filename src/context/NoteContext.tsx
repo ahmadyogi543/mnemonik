@@ -8,6 +8,14 @@ import React, {
 
 import NOTES from "../data/notes.json";
 
+enum Mode {
+  Default,
+  Read,
+  Write,
+  Edit,
+  Delete,
+}
+
 type Note = {
   id: number;
   title: string;
@@ -20,6 +28,12 @@ type NoteContextProps = {
   note: Note | null;
   notes: Note[];
   setSelectedNote: (id: number) => void;
+
+  mode: Mode;
+  setModeToRead: () => void;
+  setModeToWrite: () => void;
+  setModeToEdit: () => void;
+  setModeToDelete: () => void;
 };
 
 const NoteContext = createContext<NoteContextProps | null>(null);
@@ -27,6 +41,7 @@ const NoteContext = createContext<NoteContextProps | null>(null);
 export const NoteContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
+  // note stuff
   const [note, setNote] = useState<Note | null>(null);
   const [notes, setNotes] = useState<Note[]>([]);
 
@@ -38,6 +53,14 @@ export const NoteContextProvider: React.FC<{ children: ReactNode }> = ({
 
     setNote(note);
   };
+
+  // mode stuff
+  const [mode, setMode] = useState<Mode>(Mode.Default);
+
+  const setModeToRead = () => setMode(Mode.Read);
+  const setModeToWrite = () => setMode(Mode.Write);
+  const setModeToEdit = () => setMode(Mode.Edit);
+  const setModeToDelete = () => setMode(Mode.Delete);
 
   useEffect(() => {
     // TODO: this will get it's stuff from API
@@ -53,7 +76,19 @@ export const NoteContextProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   return (
-    <NoteContext.Provider value={{ note, notes, setSelectedNote }}>
+    <NoteContext.Provider
+      value={{
+        note,
+        notes,
+        setSelectedNote,
+
+        mode,
+        setModeToRead,
+        setModeToWrite,
+        setModeToEdit,
+        setModeToDelete,
+      }}
+    >
       {children}
     </NoteContext.Provider>
   );
