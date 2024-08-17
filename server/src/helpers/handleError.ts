@@ -18,6 +18,7 @@ export function handleInternalServerError(
   res: Response
 ) {
   res.status(500).json({
+    status: "error",
     message: "interval server error",
   });
   console.error(error);
