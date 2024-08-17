@@ -4,7 +4,7 @@ import { FaClone, FaTrashAlt } from "react-icons/fa";
 import { AppMode } from "../../constant/app-mode";
 import { formatDate } from "../../utils";
 import { useAppContext } from "../../context/AppContext";
-import { deleteNote } from "../../services/notes";
+import { deleteNote } from "../../services/deleteNote";
 
 type NoteItemProps = {
   id: number;

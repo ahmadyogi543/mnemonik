@@ -4,7 +4,7 @@ import { AppContextProps } from "./types";
 import { AppMode } from "../constant/app-mode";
 import { modeReducer } from "../reducers/modeReducer";
 import { notesReducer } from "../reducers/notesReducer";
-import { getNotes } from "../services/notes";
+import { getNotes } from "../services/getNotes";
 
 const AppContext = createContext<AppContextProps | null>(null);
 

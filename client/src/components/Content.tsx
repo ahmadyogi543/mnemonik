@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import Fab from "./Fab";
 
 import { AppMode } from "../constant/app-mode";
-import { addNote, updateNote } from "../services/notes";
+import { addNote } from "../services/addNote";
+import { updateNote } from "../services/updateNote";
 import { useAppContext } from "../context/AppContext";
 
 const Content = () => {
