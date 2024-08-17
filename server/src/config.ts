@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 
-dotenv.config();
+dotenv.config({ path: ".env.local" });
 
 const config = {
   DB_PATH: process.env.DB_PATH || ":memory:",
