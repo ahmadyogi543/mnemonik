@@ -8,11 +8,21 @@ export function sendOKJSON(data: any, message: string, res: Response) {
   });
 }
 
-export function sendInternalServerErrorJSON(
-  error: Error,
-  req: Request,
-  res: Response
-) {
+export function sendBadRequestJSON(message: string, res: Response) {
+  res.status(400).json({
+    status: "failed",
+    message,
+  });
+}
+
+export function sendNotFoundJSON(message: string, res: Response) {
+  res.status(404).json({
+    status: "failed",
+    message,
+  });
+}
+
+export function sendInternalServerErrorJSON(error: Error, res: Response) {
   res.status(500).json({
     status: "error",
     message: "interval server error",

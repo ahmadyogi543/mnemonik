@@ -7,3 +7,8 @@ export type Note = {
 };
 
 export type GetNotesProps = { notes: Note[]; error: Error | null };
+
+export type GetNoteProps = {
+  note: Note | undefined;
+  error: Error | null;
+};
