@@ -28,9 +28,9 @@ export function createNoteHandler(
     return;
   }
 
-  if (title.trim().length > 128) {
+  if (title.trim().length > 32) {
     sendBadRequestJSON(
-      "the 'title' field should not have more than 128 characters",
+      "the 'title' field should not have more than 32 characters",
       res
     );
     return;
