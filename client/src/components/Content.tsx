@@ -48,16 +48,7 @@ const Content = () => {
       const ok = confirm("Apakah kamu yakin untuk menyimpan catatan ini?");
       if (!ok) return;
 
-      const note = addNote(title, body);
-
-      notes.dispatch({
-        type: "ADD",
-        payload: {
-          note,
-        },
-      });
-
-      mode.dispatch({ type: "VIEW", payload: { id: note.id } });
+      addNote(title, body, notes.dispatch, mode.dispatch);
     }
 
     // EDIT -> set the focus on textarea and put the cursot at the EOF
