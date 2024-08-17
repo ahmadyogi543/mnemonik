@@ -4,6 +4,7 @@ import { FaClone, FaTrashAlt } from "react-icons/fa";
 import { AppMode } from "../../constant/app-mode";
 import { formatDate } from "../../utils";
 import { useAppContext } from "../../context/AppContext";
+import { deleteNote } from "../../services/notes";
 
 type NoteItemProps = {
   id: number;
@@ -43,8 +44,9 @@ const NoteItem: React.FC<NoteItemProps> = ({ id, title, body, updatedAt }) => {
     const ok = confirm("Apakah kamu yakin untuk menghapus catatan ini?");
     if (!ok) return;
 
-    notes.dispatch({ type: "DELETE", payload: { id } });
-    mode.dispatch({ type: "DEFAULT" });
+    deleteNote(id, notes.dispatch, mode.dispatch);
+    // notes.dispatch({ type: "DELETE", payload: { id } });
+    // mode.dispatch({ type: "DEFAULT" });
   };
 
   useEffect(() => {
