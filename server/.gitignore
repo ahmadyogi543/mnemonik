@@ -2,9 +2,13 @@ node_modules
 dist
 dist-ssr
 *.local
-src/data/bin/
 
-# Editor directories and files
+# test database
+src/data/bin/test.db
+src/data/bin/test.db-shm
+src/data/bin/test.db-wal
+
+# editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
