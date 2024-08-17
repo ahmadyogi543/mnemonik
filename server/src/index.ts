@@ -21,6 +21,7 @@ app.use(express.json());
 app.use("/", homeRouter);
 app.use("/api/notes", notesRouter);
 
+// for any undefined routes
 app.all("/*", notFoundHandler);
 
 app.listen(PORT, () => {
