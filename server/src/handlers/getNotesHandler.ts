@@ -1,19 +1,18 @@
 import { Request, Response } from "express";
 
 import { getNotes } from "../models/notesModel";
-import { handleInternalServerError } from "../helpers/handleError";
+import {
+  sendInternalServerErrorJSON,
+  sendOKJSON,
+} from "../helpers/responseSender";
 
 export function getNotesHandler(req: Request, res: Response) {
   const result = getNotes();
 
   if (result.error) {
-    handleInternalServerError(result.error, req, res);
+    sendInternalServerErrorJSON(result.error, req, res);
     return;
   }
 
-  res.json({
-    status: "success",
-    message: "notes retrieved successfully",
-    data: result.notes,
-  });
+  sendOKJSON(result.notes, "notes retrieved successfully", res);
 }
