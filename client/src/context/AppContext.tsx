@@ -13,7 +13,7 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [mode, modeDispatch] = useReducer(modeReducer, {
     data: AppMode.Default,
-    noteId: -1,
+    noteId: 0,
   });
   const [notes, notesDispatch] = useReducer(notesReducer, { data: [] });
 
