@@ -1,23 +1,26 @@
-import express, { Request, Response, Application } from "express";
-import cors from "cors";
+import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import helmet from "helmet";
+
+import { homeRouter } from "./routes/home";
+import { notesRouter } from "./routes/notes";
 
 dotenv.config();
 
 const HOSTNAME = process.env.HOSTNAME || "localhost";
 const PORT = process.env.PORT || 8000;
 
-const app: Application = express();
+const app = express();
 
-// middlewares
+// middlewares definitions
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello, world!");
-});
+// routes definitions
+app.use("/", homeRouter);
+app.use("/api/v1/notes", notesRouter);
 
 app.listen(PORT, () => {
   console.log(`HTTP server listening at http://${HOSTNAME}:${PORT}`);
