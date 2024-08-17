@@ -66,13 +66,7 @@ const Content = () => {
       if (!ok) return;
 
       const id = mode.noteId;
-      const payload = updateNote(id, title, body);
-      notes.dispatch({
-        type: "UPDATE",
-        payload,
-      });
-
-      mode.dispatch({ type: "VIEW", payload: { id } });
+      updateNote(id, title, body, notes.dispatch, mode.dispatch);
     }
   }, [mode]);
 
