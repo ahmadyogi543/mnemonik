@@ -7,6 +7,7 @@ import {
   sendNotFoundJSON,
   sendOKJSON,
 } from "../helpers/responseSender";
+import { validateIdParam } from "../helpers/validator";
 
 type GetNoteParams = {
   id: string;
@@ -17,12 +18,10 @@ export function getNoteHandler(
   res: Response
 ) {
   const id = parseInt(req.params.id);
-  if (Number.isNaN(id)) {
-    sendBadRequestJSON("invalid id format, should be numeric", res);
-    return;
-  }
-  if (id <= 0) {
-    sendBadRequestJSON("invalid id, should be greater than 0", res);
+
+  const [valid, message] = validateIdParam(id);
+  if (!valid) {
+    sendBadRequestJSON(message, res);
     return;
   }
 
@@ -32,7 +31,7 @@ export function getNoteHandler(
     return;
   }
   if (!result.note) {
-    sendNotFoundJSON(`cannot find note with id: ${id}`, res);
+    sendNotFoundJSON(`cannot find a note with id ${id}`, res);
     return;
   }
 

@@ -5,7 +5,9 @@ import {
   sendBadRequestJSON,
   sendInternalServerErrorJSON,
   sendNoContentJSON,
+  sendNotFoundJSON,
 } from "../helpers/responseSender";
+import { validateIdParam } from "../helpers/validator";
 
 type DeleteNoteParams = {
   id: string;
@@ -16,12 +18,10 @@ export function deleteNoteHandler(
   res: Response
 ) {
   const id = parseInt(req.params.id);
-  if (Number.isNaN(id)) {
-    sendBadRequestJSON("invalid id format, should be numeric", res);
-    return;
-  }
-  if (id <= 0) {
-    sendBadRequestJSON("invalid id, should be greater than 0", res);
+
+  const [valid, message] = validateIdParam(id);
+  if (!valid) {
+    sendBadRequestJSON(message, res);
     return;
   }
 
@@ -31,7 +31,7 @@ export function deleteNoteHandler(
     return;
   }
   if (result.status !== "success") {
-    sendBadRequestJSON(`a note with id ${id} is not exists`, res);
+    sendNotFoundJSON(`a note with id ${id} is not exists`, res);
     return;
   }
 

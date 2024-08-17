@@ -6,6 +6,7 @@ import {
   sendCreatedJSON,
   sendInternalServerErrorJSON,
 } from "../helpers/responseSender";
+import { validateNoteContent } from "../helpers/validator";
 
 type CreateNoteData = {
   title: string | undefined;
@@ -17,25 +18,14 @@ export function createNoteHandler(
   res: Response
 ) {
   const { title, body } = req.body;
-  if (title === undefined || body === undefined) {
-    sendBadRequestJSON("cannot find 'title' or 'body' field", res);
+
+  const [valid, message] = validateNoteContent(title, body);
+  if (!valid) {
+    sendBadRequestJSON(message, res);
     return;
   }
 
-  if (title.trim().length === 0 || body.trim().length === 0) {
-    sendBadRequestJSON("the 'title' or 'body' field should not be empty", res);
-    return;
-  }
-
-  if (title.trim().length > 32) {
-    sendBadRequestJSON(
-      "the 'title' field should not have more than 32 characters",
-      res
-    );
-    return;
-  }
-
-  const result = addNote(title, body);
+  const result = addNote(title!, body!);
   if (result.error) {
     sendInternalServerErrorJSON(result.error, res);
     return;

@@ -6,6 +6,7 @@ import {
   sendInternalServerErrorJSON,
   sendNoContentJSON,
 } from "../helpers/responseSender";
+import { validateIdParam, validateNoteContent } from "../helpers/validator";
 
 type EditNoteParams = {
   id: string;
@@ -21,33 +22,22 @@ export function editNoteHandler(
   res: Response
 ) {
   const id = parseInt(req.params.id);
-  if (Number.isNaN(id)) {
-    sendBadRequestJSON("invalid id format, should be numeric", res);
-    return;
-  }
-  if (id <= 0) {
-    sendBadRequestJSON("invalid id, should be greater than 0", res);
+
+  let [valid, message] = validateIdParam(id);
+  if (!valid) {
+    sendBadRequestJSON(message, res);
     return;
   }
 
   const { title, body } = req.body;
-  if (title === undefined || body === undefined) {
-    sendBadRequestJSON("cannot find 'title' or 'body' field", res);
-    return;
-  }
-  if (title.trim().length === 0 || body.trim().length === 0) {
-    sendBadRequestJSON("the 'title' or 'body' field should not be empty", res);
-    return;
-  }
-  if (title.trim().length > 32) {
-    sendBadRequestJSON(
-      "the 'title' field should not have more than 32 characters",
-      res
-    );
+
+  [valid, message] = validateNoteContent(title, body);
+  if (!valid) {
+    sendBadRequestJSON(message, res);
     return;
   }
 
-  const result = updateNote(id, title, body);
+  const result = updateNote(id, title!, body!);
   if (result.error) {
     sendInternalServerErrorJSON(result.error, res);
     return;
