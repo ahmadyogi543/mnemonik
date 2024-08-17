@@ -25,5 +25,5 @@ app.use("/api/notes", notesRouter);
 app.all("/*", notFoundHandler);
 
 app.listen(PORT, () => {
-  console.log(`HTTP server listening at http://${HOSTNAME}:${PORT}`);
+  console.log(`Listening at http://${HOSTNAME}:${PORT}`);
 });
