@@ -10,11 +10,11 @@ export function notesReducer(
     case "ADD":
       return { ...state, data: [...state.data, action.payload.note] };
     case "UPDATE":
-      const { id, title, body } = action.payload;
+      const { id, title, body, updatedAt } = action.payload;
       return {
         ...state,
         data: state.data.map((note) =>
-          note.id === id ? { ...note, title, body } : note
+          note.id === id ? { ...note, title, body, updatedAt } : note
         ),
       };
     case "DELETE":
