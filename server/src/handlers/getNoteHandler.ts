@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { GetNoteParams } from "./types";
 
 import { getNote } from "../models/notesModel";
 import {
@@ -8,10 +9,6 @@ import {
   sendOKJSON,
 } from "../helpers/responseSender";
 import { validateIdParam } from "../helpers/validator";
-
-type GetNoteParams = {
-  id: string;
-};
 
 export function getNoteHandler(
   req: Request<GetNoteParams, {}, {}>,

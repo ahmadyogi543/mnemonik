@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { CreateNoteData } from "./types";
 
 import { addNote } from "../models/notesModel";
 import {
@@ -7,11 +8,6 @@ import {
   sendInternalServerErrorJSON,
 } from "../helpers/responseSender";
 import { validateNoteContent } from "../helpers/validator";
-
-type CreateNoteData = {
-  title: string | undefined;
-  body: string | undefined;
-};
 
 export function createNoteHandler(
   req: Request<{}, {}, CreateNoteData>,

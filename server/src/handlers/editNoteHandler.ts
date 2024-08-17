@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { EditNoteParams, EditNoteData } from "./types";
 
 import { updateNote } from "../models/notesModel";
 import {
@@ -7,15 +8,6 @@ import {
   sendOKJSON,
 } from "../helpers/responseSender";
 import { validateIdParam, validateNoteContent } from "../helpers/validator";
-
-type EditNoteParams = {
-  id: string;
-};
-
-type EditNoteData = {
-  title: string | undefined;
-  body: string | undefined;
-};
 
 export function editNoteHandler(
   req: Request<EditNoteParams, {}, EditNoteData>,
