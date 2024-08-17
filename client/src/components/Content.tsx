@@ -25,6 +25,7 @@ const Content = () => {
   };
 
   useEffect(() => {
+    // VIEW -> to view the selected note from note items
     if (mode.data === AppMode.View) {
       const note = notes.data.find((note) => note.id === mode.noteId);
       if (!note) {
@@ -32,12 +33,18 @@ const Content = () => {
       }
 
       setNoteContent(note.title, note.body);
-    } else if (mode.data === AppMode.Create) {
+    }
+
+    // CREATE -> clear the content (title and body)
+    else if (mode.data === AppMode.Create) {
       clearNoteContent();
 
       if (!titleRef.current) return;
       titleRef.current.focus();
-    } else if (mode.data === AppMode.Add) {
+    }
+
+    // ADD -> send the new created note to REST API
+    else if (mode.data === AppMode.Add) {
       const ok = confirm("Apakah kamu yakin untuk menyimpan catatan ini?");
       if (!ok) return;
 
@@ -51,13 +58,19 @@ const Content = () => {
       });
 
       mode.dispatch({ type: "VIEW", payload: { id: note.id } });
-    } else if (mode.data === AppMode.Edit) {
+    }
+
+    // EDIT -> set the focus on textarea and put the cursot at the EOF
+    else if (mode.data === AppMode.Edit) {
       if (!bodyRef.current) return;
 
       const length = bodyRef.current.value.length;
       bodyRef.current.setSelectionRange(length, length);
       bodyRef.current.focus();
-    } else if (mode.data === AppMode.Update) {
+    }
+
+    // UPDATE -> send the updated note to REST API
+    else if (mode.data === AppMode.Update) {
       const ok = confirm("Apakah kamu yakin untuk memperbaharui catatan ini?");
       if (!ok) return;
 
