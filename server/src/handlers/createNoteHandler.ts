@@ -18,7 +18,6 @@ export function createNoteHandler(
   res: Response
 ) {
   const { title, body } = req.body;
-
   const [valid, message] = validateNoteContent(title, body);
   if (!valid) {
     sendBadRequestJSON(message, res);

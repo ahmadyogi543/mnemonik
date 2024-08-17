@@ -22,7 +22,6 @@ export function editNoteHandler(
   res: Response
 ) {
   const id = parseInt(req.params.id);
-
   let [valid, message] = validateIdParam(id);
   if (!valid) {
     sendBadRequestJSON(message, res);
@@ -30,7 +29,6 @@ export function editNoteHandler(
   }
 
   const { title, body } = req.body;
-
   [valid, message] = validateNoteContent(title, body);
   if (!valid) {
     sendBadRequestJSON(message, res);

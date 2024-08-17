@@ -18,7 +18,6 @@ export function getNoteHandler(
   res: Response
 ) {
   const id = parseInt(req.params.id);
-
   const [valid, message] = validateIdParam(id);
   if (!valid) {
     sendBadRequestJSON(message, res);
