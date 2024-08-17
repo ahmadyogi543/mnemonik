@@ -77,7 +77,7 @@ const Content = () => {
       <div className="m-8">
         <input
           type="text"
-          className="block focus:outline-none block font-bold text-3xl mb-2"
+          className="block w-full focus:outline-none block font-bold text-3xl mb-2"
           onChange={(ev) => setTitle(ev.target.value)}
           placeholder="Judul..."
           readOnly={mode.data === AppMode.View}
