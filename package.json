@@ -1,0 +1,11 @@
+{
+  "name": "mnemonik-app",
+  "version": "1.0.0",
+  "scripts": {
+    "client-dev": "cd client && npm run dev",
+    "server-dev": "cd server && npx nodemon src/index.ts"
+  },
+  "author": "Ahmad Yogi",
+  "license": "MIT",
+  "description": "Mnemonik, A Note-taking App"
+}
