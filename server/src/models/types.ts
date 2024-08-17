@@ -19,7 +19,7 @@ export type CreateNoteProps = {
 };
 
 export type UpdateNoteProps = {
-  status: "success" | "failed";
+  note: Note | undefined;
   error: Error | null;
 };
 

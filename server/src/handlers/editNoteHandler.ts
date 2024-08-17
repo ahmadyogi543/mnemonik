@@ -4,7 +4,7 @@ import { updateNote } from "../models/notesModel";
 import {
   sendBadRequestJSON,
   sendInternalServerErrorJSON,
-  sendNoContentJSON,
+  sendOKJSON,
 } from "../helpers/responseSender";
 import { validateIdParam, validateNoteContent } from "../helpers/validator";
 
@@ -42,10 +42,10 @@ export function editNoteHandler(
     sendInternalServerErrorJSON(result.error, res);
     return;
   }
-  if (result.status !== "success") {
+  if (!result.note) {
     sendBadRequestJSON(`a note with id ${id} is not exists`, res);
     return;
   }
 
-  sendNoContentJSON(res);
+  sendOKJSON(result.note, `a note with id ${id} is updated successfully`, res);
 }

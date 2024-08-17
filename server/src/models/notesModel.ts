@@ -89,20 +89,21 @@ export function updateNote(
     const result = stmt.run(title, body, now, id);
     if (result.changes === 0) {
       return {
-        status: "failed",
+        note: undefined,
         error: null,
       };
     }
 
+    const row = db.prepare("SELECT * FROM notes WHERE id = ?").get(id);
     return {
-      status: "success",
+      note: row as Note,
       error: null,
     };
   } catch (err) {
     const error = err as Error;
 
     return {
-      status: "failed",
+      note: undefined,
       error,
     };
   }
@@ -111,15 +112,8 @@ export function updateNote(
 export function destroyNote(id: number): DestroyNoteProps {
   try {
     const result = db.prepare("DELETE FROM notes WHERE id = ?").run(id);
-    if (result.changes === 0) {
-      return {
-        status: "failed",
-        error: null,
-      };
-    }
-
     return {
-      status: "success",
+      status: result.changes === 0 ? "failed" : "success",
       error: null,
     };
   } catch (err) {
