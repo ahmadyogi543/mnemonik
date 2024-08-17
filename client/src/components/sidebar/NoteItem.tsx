@@ -45,8 +45,6 @@ const NoteItem: React.FC<NoteItemProps> = ({ id, title, body, updatedAt }) => {
     if (!ok) return;
 
     deleteNote(id, notes.dispatch, mode.dispatch);
-    // notes.dispatch({ type: "DELETE", payload: { id } });
-    // mode.dispatch({ type: "DEFAULT" });
   };
 
   useEffect(() => {
