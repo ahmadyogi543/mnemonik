@@ -1,5 +1,6 @@
 import React from "react";
 
+import { GetNotesData } from "./types";
 import { Note } from "../types";
 import { NotesReducerAction } from "../reducers/types";
 
@@ -20,7 +21,15 @@ export async function getNotes(
       return;
     }
 
-    const notes: Note[] = result.data;
+    const data: GetNotesData[] = result.data;
+    const notes: Note[] = data.map((note) => ({
+      id: note.id,
+      title: note.title,
+      body: note.body,
+      createdAt: new Date(note.createdAt),
+      updatedAt: new Date(note.updatedAt),
+    }));
+
     notesDispatch({ type: "SET", payload: { notes } });
   } catch (error) {
     console.error(error);

@@ -2,6 +2,7 @@ import React from "react";
 
 import { Note } from "../types";
 import { ModeReducerAction, NotesReducerAction } from "../reducers/types";
+import { AddNoteData } from "./types";
 
 export async function addNote(
   title: string,
@@ -32,9 +33,16 @@ export async function addNote(
       return;
     }
 
-    const note: Note = result.data;
-    notesDispatch({ type: "ADD", payload: { note } });
+    const data: AddNoteData = result.data;
+    const note: Note = {
+      id: data.id,
+      title: data.title,
+      body: data.body,
+      createdAt: new Date(data.createdAt),
+      updatedAt: new Date(data.updatedAt),
+    };
 
+    notesDispatch({ type: "ADD", payload: { note } });
     modeDispatch({ type: "VIEW", payload: { id: note.id } });
   } catch (error) {
     console.error(error);
