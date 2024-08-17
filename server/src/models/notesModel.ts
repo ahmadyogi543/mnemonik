@@ -1,12 +1,25 @@
-type Note = {
-  id: number;
-  title: string;
-  body: string;
-  createdAt: Date;
-  updatedAt: Date;
-};
+import db from "../data/db";
 
-export function getNotes() {}
+import { Note, GetNotesProps } from "./types";
+
+export function getNotes(): GetNotesProps {
+  try {
+    const stmt = db.prepare("SELECT * FROM notes");
+    const result = stmt.all() as Note[];
+
+    return {
+      notes: result,
+      error: null,
+    };
+  } catch (err) {
+    const error = err as Error;
+
+    return {
+      notes: [],
+      error,
+    };
+  }
+}
 
 export function getNote() {}
 
