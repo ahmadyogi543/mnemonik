@@ -8,7 +8,6 @@ import {
 
 export function getNotesHandler(req: Request, res: Response) {
   const result = getNotes();
-
   if (result.error) {
     sendInternalServerErrorJSON(result.error, res);
     return;

@@ -1,4 +1,5 @@
 import db from "../data/db";
+import { formatDateForTimestamp } from "../helpers/formatDateTimestamp";
 
 import {
   Note,
@@ -6,6 +7,7 @@ import {
   GetNoteProps,
   CreateNoteProps,
   DestroyNoteProps,
+  UpdateNoteProps,
 } from "./types";
 
 export function getNotes(): GetNotesProps {
@@ -44,9 +46,9 @@ export function getNote(id: number): GetNoteProps {
   }
 }
 
-export function createNote(title: string, body: string): CreateNoteProps {
+export function addNote(title: string, body: string): CreateNoteProps {
   try {
-    const now = JSON.stringify(new Date());
+    const now = formatDateForTimestamp(new Date());
 
     const stmt = db.prepare(
       `
@@ -73,7 +75,38 @@ export function createNote(title: string, body: string): CreateNoteProps {
   }
 }
 
-export function updateNote() {}
+export function updateNote(
+  id: number,
+  title: string,
+  body: string
+): UpdateNoteProps {
+  try {
+    const now = formatDateForTimestamp(new Date());
+
+    const stmt = db.prepare(
+      "UPDATE notes SET title = ?, body = ?, updatedAt = ? WHERE id = ?"
+    );
+    const result = stmt.run(title, body, now, id);
+    if (result.changes === 0) {
+      return {
+        status: "failed",
+        error: null,
+      };
+    }
+
+    return {
+      status: "success",
+      error: null,
+    };
+  } catch (err) {
+    const error = err as Error;
+
+    return {
+      status: "failed",
+      error,
+    };
+  }
+}
 
 export function destroyNote(id: number): DestroyNoteProps {
   try {

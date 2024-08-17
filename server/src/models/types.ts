@@ -18,6 +18,11 @@ export type CreateNoteProps = {
   error: Error | null;
 };
 
+export type UpdateNoteProps = {
+  status: "success" | "failed";
+  error: Error | null;
+};
+
 export type DestroyNoteProps = {
   status: "success" | "failed";
   error: Error | null;

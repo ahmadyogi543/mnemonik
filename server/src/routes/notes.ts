@@ -2,9 +2,9 @@ import express from "express";
 
 import { createNoteHandler } from "../handlers/createNoteHandler";
 import { deleteNoteHandler } from "../handlers/deleteNoteHandler";
+import { editNoteHandler } from "../handlers/editNoteHandler";
 import { getNoteHandler } from "../handlers/getNoteHandler";
 import { getNotesHandler } from "../handlers/getNotesHandler";
-import { updateNoteHandler } from "../handlers/updateNoteHandler";
 
 export const notesRouter = express.Router();
 
@@ -18,7 +18,7 @@ notesRouter.post("/", createNoteHandler);
 notesRouter.get("/:id", getNoteHandler);
 
 // update specific note with id
-notesRouter.patch("/:id", updateNoteHandler);
+notesRouter.put("/:id", editNoteHandler);
 
 // delete specific note with id
 notesRouter.delete("/:id", deleteNoteHandler);

@@ -1,15 +1,21 @@
 import { Request, Response } from "express";
 
+import { destroyNote } from "../models/notesModel";
 import {
   sendBadRequestJSON,
   sendInternalServerErrorJSON,
-  sendOKJSON,
+  sendNoContentJSON,
 } from "../helpers/responseSender";
-import { destroyNote } from "../models/notesModel";
 
-export function deleteNoteHandler(req: Request, res: Response) {
+type DeleteNoteParams = {
+  id: string;
+};
+
+export function deleteNoteHandler(
+  req: Request<DeleteNoteParams, {}, {}>,
+  res: Response
+) {
   const id = parseInt(req.params.id);
-
   if (Number.isNaN(id)) {
     sendBadRequestJSON("invalid id format, should be numeric", res);
     return;
@@ -20,16 +26,14 @@ export function deleteNoteHandler(req: Request, res: Response) {
   }
 
   const result = destroyNote(id);
-
   if (result.error) {
     sendInternalServerErrorJSON(result.error, res);
     return;
   }
-
   if (result.status !== "success") {
     sendBadRequestJSON(`a note with id ${id} is not exists`, res);
     return;
   }
 
-  sendOKJSON(null, `delete a note with id: ${id} successfully`, res);
+  sendNoContentJSON(res);
 }

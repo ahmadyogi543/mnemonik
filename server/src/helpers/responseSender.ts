@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 
 export function sendOKJSON(data: any, message: string, res: Response) {
   res.json({
@@ -6,6 +6,18 @@ export function sendOKJSON(data: any, message: string, res: Response) {
     message,
     data,
   });
+}
+
+export function sendCreatedJSON(data: any, message: string, res: Response) {
+  res.status(201).json({
+    status: "success",
+    message,
+    data,
+  });
+}
+
+export function sendNoContentJSON(res: Response) {
+  res.sendStatus(204);
 }
 
 export function sendBadRequestJSON(message: string, res: Response) {

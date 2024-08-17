@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+
 import { getNote } from "../models/notesModel";
 import {
   sendBadRequestJSON,
@@ -7,7 +8,14 @@ import {
   sendOKJSON,
 } from "../helpers/responseSender";
 
-export function getNoteHandler(req: Request, res: Response) {
+type GetNoteParams = {
+  id: string;
+};
+
+export function getNoteHandler(
+  req: Request<GetNoteParams, {}, {}>,
+  res: Response
+) {
   const id = parseInt(req.params.id);
   if (Number.isNaN(id)) {
     sendBadRequestJSON("invalid id format, should be numeric", res);
@@ -23,7 +31,6 @@ export function getNoteHandler(req: Request, res: Response) {
     sendInternalServerErrorJSON(result.error, res);
     return;
   }
-
   if (!result.note) {
     sendNotFoundJSON(`cannot find note with id: ${id}`, res);
     return;
