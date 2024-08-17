@@ -4,8 +4,7 @@ import { AppContextProps } from "./types";
 import { AppMode } from "../constant/app-mode";
 import { modeReducer } from "../reducers/modeReducer";
 import { notesReducer } from "../reducers/notesReducer";
-
-import NOTES from "../data/notes.json";
+import { getNotes } from "../services/notes";
 
 const AppContext = createContext<AppContextProps | null>(null);
 
@@ -19,19 +18,7 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const [notes, notesDispatch] = useReducer(notesReducer, { data: [] });
 
   useEffect(() => {
-    // TODO: will get it from API
-    notesDispatch({
-      type: "SET",
-      payload: {
-        notes: NOTES.map((note) => ({
-          id: note.id,
-          title: note.title,
-          body: note.body,
-          createdAt: new Date(note.created_at),
-          updatedAt: new Date(note.updated_at),
-        })),
-      },
-    });
+    getNotes(notesDispatch);
   }, []);
 
   return (
