@@ -1,6 +1,12 @@
 import db from "../data/db";
 
-import { Note, GetNotesProps, GetNoteProps, CreateNoteProps } from "./types";
+import {
+  Note,
+  GetNotesProps,
+  GetNoteProps,
+  CreateNoteProps,
+  DestroyNoteProps,
+} from "./types";
 
 export function getNotes(): GetNotesProps {
   try {
@@ -69,4 +75,26 @@ export function createNote(title: string, body: string): CreateNoteProps {
 
 export function updateNote() {}
 
-export function destroyNote() {}
+export function destroyNote(id: number): DestroyNoteProps {
+  try {
+    const result = db.prepare("DELETE FROM notes WHERE id = ?").run(id);
+    if (result.changes === 0) {
+      return {
+        status: "failed",
+        error: null,
+      };
+    }
+
+    return {
+      status: "success",
+      error: null,
+    };
+  } catch (err) {
+    const error = err as Error;
+
+    return {
+      status: "failed",
+      error,
+    };
+  }
+}
