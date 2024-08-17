@@ -12,3 +12,8 @@ export type GetNoteProps = {
   note: Note | undefined;
   error: Error | null;
 };
+
+export type CreateNoteProps = {
+  note: Note | undefined;
+  error: Error | null;
+};
