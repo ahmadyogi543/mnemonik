@@ -6,7 +6,6 @@ import config from "./config";
 
 import { homeRouter } from "./routes/home";
 import { notesRouter } from "./routes/notes";
-
 import { notFoundHandler } from "./handlers/notFoundHandler";
 
 const { HOSTNAME, PORT } = config;
