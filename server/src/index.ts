@@ -1,16 +1,12 @@
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
 import helmet from "helmet";
 
+import config from "./config";
 import { homeRouter } from "./routes/home";
 import { notesRouter } from "./routes/notes";
 
-dotenv.config();
-
-const HOSTNAME = process.env.HOSTNAME || "localhost";
-const PORT = process.env.PORT || 8000;
-
+const { HOSTNAME, PORT } = config;
 const app = express();
 
 // middlewares definitions
