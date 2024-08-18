@@ -6,7 +6,7 @@ import config from "./config";
 
 import { homeRouter } from "./routes/home";
 import { notesRouter } from "./routes/notes";
-import { notFoundHandler } from "./handlers/notFoundHandler";
+import { notFoundHandler } from "./handlers/utils/notFoundHandler";
 
 const { HOSTNAME, PORT } = config;
 const app = express();
