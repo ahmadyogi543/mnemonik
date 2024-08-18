@@ -11,9 +11,8 @@ const Main = () => {
   useEffect(() => {
     if (!status.error) return;
 
-    // alert(status.error.message);
-    alert("Maaf terjadi kesalahan pada sistem");
-  }, [status]);
+    alert("Kesalahan: maaf terjadi kesalahan pada sistem");
+  }, [status.error]);
 
   // TODO: use the status.loading to have a circular loading screen
   // show to the user and if still true, the app is unusable

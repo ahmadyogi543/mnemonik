@@ -23,7 +23,7 @@ export function modeReducer(
     case "DESTROY":
       return { ...state, data: AppMode.Destroy, noteId: action.payload.id };
     case "RESET_NOTE_ID":
-      return { ...state, noteId: -1 };
+      return { ...state, noteId: 0 };
     default:
       throw new Error(`error: unknown action type`);
   }

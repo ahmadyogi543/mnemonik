@@ -69,7 +69,7 @@ const Content = () => {
       const id = mode.noteId;
       updateNote(id, title, body, notes.dispatch, mode.dispatch);
     }
-  }, [mode]);
+  }, [mode.data]);
 
   return (
     <div className="flex flex-col relative flex-grow bg-white border border-gray-300">

@@ -21,8 +21,6 @@ const NoteItem: React.FC<NoteItemProps> = ({ id, title, body, updatedAt }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const handleOnClickNote = () => {
-    if (id === mode.noteId) return;
-
     if (mode.data === AppMode.Edit) {
       const ok = confirm("Apakah kamu yakin untuk batal mengedit catatan ini?");
       if (!ok) return;
@@ -52,7 +50,7 @@ const NoteItem: React.FC<NoteItemProps> = ({ id, title, body, updatedAt }) => {
     if (!ref.current) return;
 
     ref.current.scrollIntoView({ behavior: "smooth" });
-  }, [mode]);
+  }, [mode.noteId, ref.current]);
 
   return (
     <div

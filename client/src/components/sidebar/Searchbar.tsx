@@ -1,12 +1,37 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaTimes, FaSearch } from "react-icons/fa";
+
+import { useAppContext } from "../../context/AppContext";
+import { getNotes } from "../../services/getNotes";
 
 const Searchbar = () => {
   const [query, setQuery] = useState("");
+  const { mode, notes, status } = useAppContext();
 
   const handleOnClickBtn = () => {
     setQuery("");
   };
+
+  useEffect(() => {
+    if (status.loading) return;
+
+    mode.dispatch({ type: "DEFAULT" });
+    mode.dispatch({ type: "RESET_NOTE_ID" });
+
+    if (query === "") {
+      getNotes(notes.dispatch, () => {});
+      return;
+    }
+
+    const handler = setTimeout(() => {
+      const filteredNotes = notes.data.filter((note) =>
+        note.title.toLowerCase().includes(query.toLowerCase())
+      );
+      notes.dispatch({ type: "SET", payload: { notes: filteredNotes } });
+    }, 500);
+
+    return () => clearTimeout(handler);
+  }, [query, status.loading]);
 
   return (
     <div className="flex gap-2">
