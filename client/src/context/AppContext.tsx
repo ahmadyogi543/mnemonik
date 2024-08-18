@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useReducer } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 
 import { AppContextProps } from "./types";
 import { AppMode } from "../constant/app-mode";
@@ -16,9 +22,13 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     noteId: 0,
   });
   const [notes, notesDispatch] = useReducer(notesReducer, { data: [] });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    getNotes(notesDispatch);
+    getNotes(notesDispatch, () => setLoading(false)).catch((error) =>
+      setError(error)
+    );
   }, []);
 
   return (
@@ -32,6 +42,10 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
         notes: {
           data: notes.data,
           dispatch: notesDispatch,
+        },
+        status: {
+          loading,
+          error,
         },
       }}
     >

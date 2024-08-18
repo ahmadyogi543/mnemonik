@@ -1,13 +1,11 @@
-import Body from "./components/Body";
-import Topbar from "./components/Topbar";
+import Main from "./components/Main";
 
 import { AppContextProvider } from "./context/AppContext";
 
 const App = () => {
   return (
     <AppContextProvider>
-      <Topbar />
-      <Body />
+      <Main />
     </AppContextProvider>
   );
 };

@@ -13,4 +13,8 @@ export type AppContextProps = {
     data: Note[];
     dispatch: React.Dispatch<NotesReducerAction>;
   };
+  status: {
+    loading: boolean;
+    error: Error | null;
+  };
 };
