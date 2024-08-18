@@ -3,10 +3,8 @@ dist
 dist-ssr
 *.local
 
-# test database
-src/data/bin/test.db
-src/data/bin/test.db-shm
-src/data/bin/test.db-wal
+# database files
+src/data/bin/*
 
 # editor directories and files
 .vscode/*
