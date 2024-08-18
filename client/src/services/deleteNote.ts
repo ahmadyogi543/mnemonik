@@ -20,7 +20,10 @@ export async function deleteNote(
       throw new Error(`error: failed to fetch ${url}`);
     }
 
-    if (resp.status !== 204) return;
+    if (resp.status !== 204) {
+      alert("Kesalahan: maaf terjadi gangguan pada sistem");
+      return;
+    }
 
     notesDispatch({ type: "DELETE", payload: { id } });
     modeDispatch({ type: "DEFAULT" });

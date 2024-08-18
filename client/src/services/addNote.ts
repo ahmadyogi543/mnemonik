@@ -29,6 +29,7 @@ export async function addNote(
 
     const result = await resp.json();
     if (result.status !== "success") {
+      alert("Kesalahan: maaf terjadi gangguan pada sistem");
       console.error(result.message);
       return;
     }
