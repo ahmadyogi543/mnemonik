@@ -27,7 +27,7 @@
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
      inkscape:zoom="0.98639579"
-     inkscape:cx="145.98602"
+     inkscape:cx="145.47913"
      inkscape:cy="138.88948"
      inkscape:window-width="1258"
      inkscape:window-height="753"
@@ -43,21 +43,22 @@
      id="layer1"
      transform="translate(93.402405,24.473213)">
     <rect
-       style="fill:#27272a;fill-opacity:1;stroke-width:3.175;stroke:#ffffff;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
        id="rect1"
        width="63.5"
        height="63.5"
        x="-93.402405"
-       y="-24.473213" />
+       y="-24.473213"
+       ry="8.5666733" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5778px;font-family:'Font Awesome 6 Pro';-inkscape-font-specification:'Font Awesome 6 Pro';fill:#ffffff;fill-opacity:1;stroke-width:0.264583"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5778px;font-family:'Font Awesome 6 Pro';-inkscape-font-specification:'Font Awesome 6 Pro';fill:#27272a;fill-opacity:1;stroke-width:0.264583"
        x="-71.510529"
        y="29.501852"
        id="text2"><tspan
          sodipodi:role="line"
          id="tspan2"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.5778px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#ffffff;stroke-width:0.264583"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.5778px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#27272a;stroke-width:0.264583;fill-opacity:1"
          x="-71.510529"
          y="29.501852">Mn</tspan></text>
   </g>
