@@ -41,7 +41,21 @@ Untuk dapat menjalankan aplikasi ini dalam mode _development_, diperlukan bebera
 
 Adapun langkah-langkah yang harus dilakukan adalah sebagai berikut.
 
-Pertama, perhatikan bahwa aplikasi ini menggunakan `environment variables` untuk dapat mengakses berbagai value penting yang bersifat sebagai konfigurasi aplikasi. Adapun berikut akan dipaparkan bagaimana cara untuk dapat mengatur `environment variables` pada aplikasi.
+Pertama lakukan instalasi pustaka yang digunakan pada pengembangan aplikasi ini dengan perintah berikut.
+
+Perintah untuk instalasi pustaka pada sisi client:
+
+```sh
+$ npm run client-install
+```
+
+Perintah untuk instalasi pustaka pada sisi server:
+
+```sh
+$ npm run server-install
+```
+
+Selanjutnya, perhatikan bahwa aplikasi ini menggunakan `environment variables` untuk dapat mengakses berbagai value penting yang bersifat sebagai konfigurasi aplikasi. Adapun berikut akan dipaparkan bagaimana cara untuk dapat mengatur `environment variables` pada aplikasi.
 
 Untuk sisi server, pertama salinlah berkas `.env` pada berkas baru dengan nama `.env.local` dan kemudian ubah seperti berikut.
 

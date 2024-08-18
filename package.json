@@ -2,6 +2,8 @@
   "name": "mnemonik-app",
   "version": "1.0.0",
   "scripts": {
+    "client-install": "cd client && npm install",
+    "server-install": "cd server && npm install",
     "client-dev": "cd client && npm run dev",
     "server-dev": "cd server && npx nodemon src/index.ts"
   },
