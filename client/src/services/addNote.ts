@@ -1,8 +1,9 @@
 import React from "react";
 
-import { Note } from "../types";
-import { ModeReducerAction, NotesReducerAction } from "../reducers/types";
 import { AddNoteData } from "./types";
+import { config } from "../constant/config";
+import { ModeReducerAction, NotesReducerAction } from "../reducers/types";
+import { Note } from "../types";
 
 export async function addNote(
   title: string,
@@ -10,7 +11,7 @@ export async function addNote(
   notesDispatch: React.Dispatch<NotesReducerAction>,
   modeDispatch: React.Dispatch<ModeReducerAction>
 ) {
-  const url = "http://localhost:5000/api/notes";
+  const url = `${config.API_URL}/notes`;
 
   try {
     const resp = await fetch(url, {

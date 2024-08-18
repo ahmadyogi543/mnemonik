@@ -1,14 +1,15 @@
 import React from "react";
 
-import { Note } from "../types";
+import { config } from "../constant/config";
 import { GetNotesData } from "./types";
+import { Note } from "../types";
 import { NotesReducerAction } from "../reducers/types";
 
 export async function getNotes(
   notesDispatch: React.Dispatch<NotesReducerAction>,
   callback: () => void
 ) {
-  const url = "http://localhost:5000/api/notes";
+  const url = `${config.API_URL}/notes`;
 
   const resp = await fetch(url);
   if (!resp) {

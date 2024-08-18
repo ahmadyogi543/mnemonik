@@ -1,5 +1,6 @@
 import React from "react";
 
+import { config } from "../constant/config";
 import { ModeReducerAction, NotesReducerAction } from "../reducers/types";
 
 export async function deleteNote(
@@ -7,7 +8,7 @@ export async function deleteNote(
   notesDispatch: React.Dispatch<NotesReducerAction>,
   modeDispatch: React.Dispatch<ModeReducerAction>
 ) {
-  const url = `http://localhost:5000/api/notes/${id}`;
+  const url = `${config.API_URL}/notes/${id}`;
 
   try {
     const resp = await fetch(url, {
