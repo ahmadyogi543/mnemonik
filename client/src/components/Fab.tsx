@@ -19,7 +19,7 @@ const Fab = () => {
   return (
     <button
       onClick={handleOnClick}
-      className="absolute bottom-8 right-8 bg-zinc-800 text-white p-5 rounded-full shadow-lg hover:bg-zinc-700 focus:outline-none"
+      className="absolute bottom-8 right-8 bg-zinc-800 text-white p-5 rounded-full shadow-xl hover:bg-zinc-700 focus:outline-none"
     >
       {mode.data === AppMode.View ? (
         <FaEdit className="text-lg" />
