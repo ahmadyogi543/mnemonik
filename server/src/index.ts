@@ -2,11 +2,11 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 
-import config from "./config";
-
 import { homeRouter } from "./routes/home";
 import { notesRouter } from "./routes/notes";
 import { notFoundHandler } from "./handlers/utils/notFoundHandler";
+
+import config from "./config";
 
 const { HOSTNAME, PORT } = config;
 const app = express();
