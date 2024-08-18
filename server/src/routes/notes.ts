@@ -1,10 +1,10 @@
 import express from "express";
 
-import { createNoteHandler } from "../handlers/createNoteHandler";
-import { deleteNoteHandler } from "../handlers/deleteNoteHandler";
-import { editNoteHandler } from "../handlers/editNoteHandler";
-import { getNoteHandler } from "../handlers/getNoteHandler";
-import { getNotesHandler } from "../handlers/getNotesHandler";
+import { createNoteHandler } from "../handlers/notes/createNoteHandler";
+import { deleteNoteHandler } from "../handlers/notes/deleteNoteHandler";
+import { editNoteHandler } from "../handlers/notes/editNoteHandler";
+import { getNoteHandler } from "../handlers/notes/getNoteHandler";
+import { getNotesHandler } from "../handlers/notes/getNotesHandler";
 
 export const notesRouter = express.Router();
 

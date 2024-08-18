@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
-import { GetNoteParams } from "./types";
+import { GetNoteParams } from "../types";
 
-import { getNote } from "../models/notes/getNote";
+import { getNote } from "../../models/notes/getNote";
 import {
   sendBadRequestJSON,
   sendInternalServerErrorJSON,
   sendNotFoundJSON,
   sendOKJSON,
-} from "../helpers/responseSender";
-import { validateIdParam } from "../helpers/validator";
+} from "../../helpers/responseSender";
+import { validateIdParam } from "../../helpers/validator";
 
 export function getNoteHandler(
   req: Request<GetNoteParams, {}, {}>,

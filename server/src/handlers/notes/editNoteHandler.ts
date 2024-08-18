@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import { EditNoteParams, EditNoteData } from "./types";
+import { EditNoteParams, EditNoteData } from "../types";
 
-import { updateNote } from "../models/notes/updateNote";
+import { updateNote } from "../../models/notes/updateNote";
 import {
   sendBadRequestJSON,
   sendInternalServerErrorJSON,
   sendOKJSON,
-} from "../helpers/responseSender";
-import { validateIdParam, validateNoteContent } from "../helpers/validator";
+} from "../../helpers/responseSender";
+import { validateIdParam, validateNoteContent } from "../../helpers/validator";
 
 export function editNoteHandler(
   req: Request<EditNoteParams, {}, EditNoteData>,

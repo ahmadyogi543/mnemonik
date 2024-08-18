@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 
-import { getNotes } from "../models/notes/getNotes";
+import { getNotes } from "../../models/notes/getNotes";
 import {
   sendInternalServerErrorJSON,
   sendOKJSON,
-} from "../helpers/responseSender";
+} from "../../helpers/responseSender";
 
 export function getNotesHandler(req: Request, res: Response) {
   const result = getNotes();

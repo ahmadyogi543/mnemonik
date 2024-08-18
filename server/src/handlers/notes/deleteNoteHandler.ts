@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
-import { DeleteNoteParams } from "./types";
+import { DeleteNoteParams } from "../types";
 
-import { destroyNote } from "../models/notes/destroyNote";
+import { destroyNote } from "../../models/notes/destroyNote";
 import {
   sendBadRequestJSON,
   sendInternalServerErrorJSON,
   sendNoContentJSON,
   sendNotFoundJSON,
-} from "../helpers/responseSender";
-import { validateIdParam } from "../helpers/validator";
+} from "../../helpers/responseSender";
+import { validateIdParam } from "../../helpers/validator";
 
 export function deleteNoteHandler(
   req: Request<DeleteNoteParams, {}, {}>,
