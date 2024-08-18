@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { getNotes } from "../models/notesModel";
+import { getNotes } from "../models/notes/getNotes";
 import {
   sendInternalServerErrorJSON,
   sendOKJSON,

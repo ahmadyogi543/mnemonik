@@ -4,7 +4,5 @@ import config from "../config";
 
 const { DB_NAME: DB_PATH } = config;
 
-const db = new Database(DB_PATH);
+export const db = new Database(DB_PATH);
 db.pragma("journal_mode = WAL");
-
-export default db;

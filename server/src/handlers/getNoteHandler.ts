@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { GetNoteParams } from "./types";
 
-import { getNote } from "../models/notesModel";
+import { getNote } from "../models/notes/getNote";
 import {
   sendBadRequestJSON,
   sendInternalServerErrorJSON,

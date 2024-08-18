@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { DeleteNoteParams } from "./types";
 
-import { destroyNote } from "../models/notesModel";
+import { destroyNote } from "../models/notes/destroyNote";
 import {
   sendBadRequestJSON,
   sendInternalServerErrorJSON,

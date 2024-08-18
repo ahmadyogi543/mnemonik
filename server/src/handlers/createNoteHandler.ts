@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { CreateNoteData } from "./types";
 
-import { addNote } from "../models/notesModel";
+import { addNote } from "../models/notes/addNote";
 import {
   sendBadRequestJSON,
   sendCreatedJSON,
