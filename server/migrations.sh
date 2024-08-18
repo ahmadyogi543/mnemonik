@@ -18,10 +18,10 @@ if [ ! -f "$SQL_FILEPATH" ]; then
 fi
 
 # define the SQLite database path
-DB_NAME=$3
+DB_FILEPATH=$3
 
 # run the SQL script on the SQLite database
-sqlite3 "src/data/bin/$DB_NAME.db" < "$SQL_FILEPATH"
+sqlite3 $DB_FILEPATH < "$SQL_FILEPATH"
 
 # check if the command was successful
 if [ $? -eq 0 ]; then
