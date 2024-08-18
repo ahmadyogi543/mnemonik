@@ -65,7 +65,7 @@ HOSTNAME=localhost
 PORT=5000
 ```
 
-> Sebenarnya bisa saja value untuk PORT diubah sesuai dengna keinginan. Adapun untuk DB_NAME dan HOSTNAME harus tetap sama karena server sedang dijalankan pada mode development
+> Sebenarnya bisa saja value untuk PORT diubah sesuai keinginan. Adapun untuk DB_NAME dan HOSTNAME harus tetap sama karena server sedang dijalankan pada mode development
 
 Adapun untuk sisi client, pertama salinlah berkas `.env` pada berkas baru dengan nama `.env.local` dan kemudian ubah seperti berikut.
 
