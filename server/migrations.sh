@@ -13,7 +13,7 @@ SQL_FILEPATH="src/data/migrations/${MIGRATION_NAME}_table_${DIRECTION}.sql"
 
 # check if the SQL file exists
 if [ ! -f "$SQL_FILEPATH" ]; then
-    echo "error: file '$SQL_FILEPATH' does not exist."
+    echo "error: file '$SQL_FILEPATH' does not exist"
     exit 1
 fi
 
@@ -25,8 +25,8 @@ sqlite3 "src/data/bin/$DB_NAME.db" < "$SQL_FILEPATH"
 
 # check if the command was successful
 if [ $? -eq 0 ]; then
-    echo "success: migration applied successfully."
+    echo "migration applied successfully"
 else
-    echo "error: when applying migration."
+    echo "error when applying migration"
     exit 1
 fi
