@@ -2,7 +2,7 @@
 
 const Topbar = () => {
   return (
-    <div className="flex justify-center p-5 shadow-md bg-zinc-800 text-white">
+    <div className="flex justify-center p-5 shadow-lg bg-zinc-800 text-white fixed w-full z-50">
       {/* <div>
         <MdMenu className="text-2xl" />
       </div> */}
