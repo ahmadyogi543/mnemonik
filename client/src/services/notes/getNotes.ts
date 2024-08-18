@@ -1,9 +1,9 @@
 import React from "react";
 
-import { config } from "../constant/config";
-import { GetNotesData } from "./types";
-import { Note } from "../types";
-import { NotesReducerAction } from "../reducers/types";
+import { config } from "../../constant/config";
+import { GetNotesData } from "../types";
+import { Note } from "../../types";
+import { NotesReducerAction } from "../../reducers/types";
 
 export async function getNotes(
   notesDispatch: React.Dispatch<NotesReducerAction>,

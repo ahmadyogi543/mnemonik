@@ -1,21 +1,21 @@
 import React from "react";
 
-import { AddNoteData } from "./types";
-import { config } from "../constant/config";
-import { ModeReducerAction, NotesReducerAction } from "../reducers/types";
-import { Note } from "../types";
+import { config } from "../../constant/config";
+import { ModeReducerAction, NotesReducerAction } from "../../reducers/types";
+import { UpdateNoteData } from "../types";
 
-export async function addNote(
+export async function updateNote(
+  id: number,
   title: string,
   body: string,
   notesDispatch: React.Dispatch<NotesReducerAction>,
   modeDispatch: React.Dispatch<ModeReducerAction>
 ) {
-  const url = `${config.API_URL}/notes`;
+  const url = `${config.API_URL}/notes/${id}`;
 
   try {
     const resp = await fetch(url, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -35,17 +35,18 @@ export async function addNote(
       return;
     }
 
-    const data: AddNoteData = result.data;
-    const note: Note = {
-      id: data.id,
-      title: data.title,
-      body: data.body,
-      createdAt: new Date(data.createdAt),
-      updatedAt: new Date(data.updatedAt),
-    };
+    const data: UpdateNoteData = result.data;
+    notesDispatch({
+      type: "UPDATE",
+      payload: {
+        id: data.id,
+        title: data.title,
+        body: data.body,
+        updatedAt: new Date(data.updatedAt),
+      },
+    });
 
-    notesDispatch({ type: "ADD", payload: { note } });
-    modeDispatch({ type: "VIEW", payload: { id: note.id } });
+    modeDispatch({ type: "VIEW", payload: { id: data.id } });
   } catch (error) {
     console.error(error);
   }

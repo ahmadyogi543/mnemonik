@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from "react";
 import { FaClone, FaTrashAlt } from "react-icons/fa";
 
 import { AppMode } from "../../constant/app-mode";
+import { deleteNote } from "../../services/notes/deleteNote";
 import { formatDate } from "../../utils";
 import { useAppContext } from "../../context/AppContext";
-import { deleteNote } from "../../services/deleteNote";
 
 type NoteItemProps = {
   id: number;

@@ -1,7 +1,6 @@
-import { Note } from "../types";
-import { ModeReducerAction, NotesReducerAction } from "../reducers/types";
-
 import { AppMode } from "../constant/app-mode";
+import { ModeReducerAction, NotesReducerAction } from "../reducers/types";
+import { Note } from "../types";
 
 export type AppContextProps = {
   mode: {

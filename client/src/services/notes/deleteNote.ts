@@ -1,7 +1,7 @@
 import React from "react";
 
-import { config } from "../constant/config";
-import { ModeReducerAction, NotesReducerAction } from "../reducers/types";
+import { config } from "../../constant/config";
+import { ModeReducerAction, NotesReducerAction } from "../../reducers/types";
 
 export async function deleteNote(
   id: number,

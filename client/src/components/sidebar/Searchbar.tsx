@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { FaTimes, FaSearch } from "react-icons/fa";
 
+import { getNotes } from "../../services/notes/getNotes";
 import { useAppContext } from "../../context/AppContext";
-import { getNotes } from "../../services/getNotes";
 
 const Searchbar = () => {
   const [query, setQuery] = useState("");
