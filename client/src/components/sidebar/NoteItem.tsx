@@ -34,7 +34,14 @@ const NoteItem: React.FC<NoteItemProps> = ({ id, title, body, updatedAt }) => {
     });
   };
 
-  const handleOnClickCloneBtn = () => {};
+  const handleOnClickCloneBtn = () => {
+    if (id !== mode.noteId) return;
+
+    navigator.clipboard
+      .writeText(body)
+      .then(() => alert("Catatan berhasil disalin ke clipboard!"))
+      .catch((_) => alert("Kesalahan: gagal menyalin catatan ke clipboard"));
+  };
 
   const handleOnClickDeleteBtn = () => {
     if (id !== mode.noteId) return;
