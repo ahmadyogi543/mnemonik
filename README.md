@@ -12,7 +12,7 @@ Pada sisi client, aplikasi berupa sebuah aplikasi web yang dibangun menggunakan 
 
 - React: untuk membangun antar-muka (UI) aplikasi
 
-- TypeScript: bahasa pemrograman yang digunakan untuk menambah produktivitas penulisan kode program dengan adanya sistem tipe data
+- TypeScript: bahasa pemrograman yang digunakan untuk menambah produktivitas penulisan kode program dengan adanya sistem tipe data yang ketat
 
 - Tailwind CSS: pustaka untuk mempermudah mengatur tampilan antar-muka (UI) tanpa perlu menulis CSS secara langsung
 
@@ -24,7 +24,7 @@ Pada sisi client, aplikasi berupa sebuah aplikasi web yang dibangun menggunakan 
 
 - Node.js: sebuah runtime untuk menjalankan program yang ditulis dengan bahasa pemrograman JavaScript di sisi server
 
-- TypeScript: bahasa pemrograman yang digunakan untuk menambah produktivitas penulisan kode program dengan adanya sistem tipe data
+- TypeScript: bahasa pemrograman yang digunakan untuk menambah produktivitas penulisan kode program dengan adanya sistem tipe data yang ketat
 
 - Express: sebuah web framework untuk back-end, dilengkapi dengan berbagai fungsi untuk bekerja dengan web pada sisi server
 
@@ -36,6 +36,7 @@ Untuk dapat menjalankan aplikasi ini dalam mode _development_, diperlukan bebera
 
 - Node.js
 - Terminal
+- Browser
 
 > Khusus untuk sistem operasi Windows, untuk dapat mengeksekusi perintah yang akan dipaparkan wajib menggunakan BASH atau shell lainnya. Adapun hal ini dapat dicapai dengan menggunakan Git BASH ataupun menggunakan fitur WSL dan sebagainya.
 
@@ -94,7 +95,5 @@ $ npm run server-dev
 Jika sudah selesai mengikuti langkah-langkah di atas maka cobalah untuk menjalankan aplikasi pada web browser, pada umumnya URL dari aplikasi web pada mode development adalah `http://localhost:5173` dan aplikasi siap untuk digunakan!
 
 ## Demo Aplikasi
-
-Berikut adalah sedikit demo ketika menjalankan aplikasi menggunakan browser Chrome dan Sistem Operasi Arch Linux.
 
 ![demo-aplikasi](/resources/demo.gif)
