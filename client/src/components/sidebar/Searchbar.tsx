@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaTimes, FaSearch } from "react-icons/fa";
 
 import { useAppContext } from "../../context/AppContext";
@@ -43,7 +43,7 @@ const Searchbar = () => {
         value={query}
       />
       <button
-        className="block px-3 bg-zinc-800 hover:bg-zinc-700 text-white text-sm"
+        className="block px-3 bg-zinc-800 hover:bg-zinc-700 text-white text-sm shadow-lg"
         onClick={handleOnClickBtn}
       >
         {query === "" ? <FaSearch /> : <FaTimes />}
