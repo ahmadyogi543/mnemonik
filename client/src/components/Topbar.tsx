@@ -1,17 +1,17 @@
-import { MdMenu, MdMoreVert } from "react-icons/md";
+// import { MdMenu, MdMoreVert } from "react-icons/md";
 
 const Topbar = () => {
   return (
-    <div className="flex justify-between p-5 shadow-md bg-zinc-800 text-white">
-      <div>
+    <div className="flex justify-center p-5 shadow-md bg-zinc-800 text-white">
+      {/* <div>
         <MdMenu className="text-2xl" />
-      </div>
+      </div> */}
       <div>
         <h1 className="font-semibold">MNEMONIK</h1>
       </div>
-      <div>
+      {/* <div>
         <MdMoreVert className="text-2xl" />
-      </div>
+      </div> */}
     </div>
   );
 };
