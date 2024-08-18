@@ -10,7 +10,7 @@ const Body = () => {
 
   return (
     <div
-      className="flex flex-grow flex-col-reverse lg:flex-row gap-4 p-4 lg:overflow-hidden bg-gray-200"
+      className="flex flex-grow flex-col-reverse lg:flex-row gap-4 p-4 lg:overflow-hidden"
       style={{
         marginTop: 64,
       }}
