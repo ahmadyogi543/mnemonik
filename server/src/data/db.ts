@@ -41,7 +41,6 @@ try {
 
 // close the db connection if the program received SIGINT
 process.on("SIGINT", () => {
-  console.log("=> db: closing database connection...");
   db.close();
   exit(0);
 });
