@@ -1,6 +1,5 @@
 import * as fs from "fs";
 import * as path from "path";
-import { exec } from "child_process";
 import { exit } from "process";
 
 import config from "../config";
@@ -26,18 +25,23 @@ if (!fs.existsSync(dirname)) {
 export const db = new Database(DB_PATH);
 db.pragma("journal_mode = WAL");
 
-// exec migrations script to create a notes table
-if (fs.existsSync(DB_PATH)) {
-  const cmd = `bash ./migrations.sh create_notes up ${DB_PATH}`;
-  exec(cmd, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`=> db: ${error}`);
-      return;
-    }
-    if (stderr) {
-      console.error(`=> db: ${stderr.trim()}`);
-      return;
-    }
-    console.log(`=> db: ${stdout.trim()}`);
-  });
+// migrate db to create notes table
+try {
+  const query = fs.readFileSync(
+    path.join(__dirname, "migrations", "create_notes_table_up.sql"),
+    { encoding: "utf-8" }
+  );
+  db.exec(query);
+
+  console.log("=> db: migration applied successfully");
+} catch (err) {
+  console.error(err);
+  exit(1);
 }
+
+// close the db connection if the program received SIGINT
+process.on("SIGINT", () => {
+  console.log("=> db: closing database connection...");
+  db.close();
+  exit(0);
+});
